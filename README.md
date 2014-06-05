@@ -1,7 +1,7 @@
 Jalali.py
 =========
 
-Jalali.py is a simple Python code for converting between Jalali date and Gregorian date. It is a port of http://jdf.scr.ir/ (PHP).
+Jalali.py is a simple Python code for converting between Persian date and Gregorian date. It is a port of http://jdf.scr.ir/ (PHP).
 
 Sample Usage
 --------
@@ -10,11 +10,11 @@ Sample Usage
 >>> import jalali
 >>> jalali.convert_to_gregorian('1393-1-11')
 datetime.date(2014, 3, 31)
->>> jalali.convert_to_jalali('2014-3-31')
+>>> jalali.convert_to_persian('2014-3-31')
 '1393-1-11'
 >>> import datetime
 >>> today = datetime.date(2014, 5, 7)
->>> jalali.convert_to_jalali(today)
+>>> jalali.convert_to_persian(today)
 '1393-2-17'
 ```
 
