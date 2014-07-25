@@ -8,14 +8,22 @@ Sample Usage
 
 ```python
 >>> import jalali
->>> jalali.convert_to_gregorian('1393-1-11')
-datetime.date(2014, 3, 31)
->>> jalali.convert_to_persian('2014-3-31')
+
+>>> jalali.Persian('1393-1-11').gregorian_string()
+4-3-31'
+>>> jalali.Persian(1393, 1, 11).gregorian_datetime()
+e.date(2014, 3, 31)
+>>> jalali.Persian('1393/1/11').gregorian_string("{}/{}/{}")
+'2014/3/31'
+>>> jalali.Persian((1393, 1, 11)).gregorian_tuple()
+(2014, 3, 31)
+
+>>> jalali.Gregorian('2014-3-31').persian_string()
 '1393-1-11'
->>> import datetime
->>> today = datetime.date(2014, 5, 7)
->>> jalali.convert_to_persian(today)
-'1393-2-17'
+>>> jalali.Gregorian('2014,03,31').persian_tuple()
+(1393, 1, 11)
+>>> jalali.Gregorian(2014, 3, 31).persian_string("{0}")
+'1393'
 ```
 
 Original License
