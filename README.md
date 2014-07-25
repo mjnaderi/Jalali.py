@@ -10,7 +10,7 @@ Sample Usage
 >>> import jalali
 
 >>> jalali.Persian('1393-1-11').gregorian_string()
-'4-3-31'
+'2014-3-31'
 >>> jalali.Persian(1393, 1, 11).gregorian_datetime()
 datetime.date(2014, 3, 31)
 >>> jalali.Persian('1393/1/11').gregorian_string("{}/{}/{}")
