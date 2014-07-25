@@ -33,8 +33,8 @@
 #  '1393-1-11'
 #  >>> jalali.Gregorian('2014,03,31').persian_tuple()
 #  (1393, 1, 11)
-#  >>> jalali.Gregorian(2014, 3, 31).persian_string("{0}")
-#  '1393'
+#  >>> jalali.Gregorian(2014, 3, 31).persian_year
+#  1393
 
 import re
 import datetime
@@ -74,9 +74,9 @@ class Gregorian:
         except:
             raise Exception("Invalid Date")
 
-        self.gyear = year
-        self.gmonth = month
-        self.gday = day
+        self.gregorian_year = year
+        self.gregorian_month = month
+        self.gregorian_day = day
 
         # Convert date to Jalali
         d_4 = year % 4
@@ -107,15 +107,15 @@ class Gregorian:
             jm = int((doy_j - 187) / 30)
             jd = doy_j - 186 - (jm * 30)
             jm += 7
-        self.jyear = jy
-        self.jmonth = jm
-        self.jday = jd
+        self.persian_year = jy
+        self.persian_month = jm
+        self.persian_day = jd
 
     def persian_tuple(self):
-        return self.jyear, self.jmonth, self.jday
+        return self.persian_year, self.persian_month, self.persian_day
 
     def persian_string(self, date_format="{}-{}-{}"):
-        return date_format.format(self.jyear, self.jmonth, self.jday)
+        return date_format.format(self.persian_year, self.persian_month, self.persian_day)
 
 
 class Persian:
@@ -148,9 +148,9 @@ class Persian:
         if year < 1 or month < 1 or month > 12 or day < 1 or day > 31 or (month > 6 and day == 31):
             raise Exception("Incorrect Date")
 
-        self.jyear = year
-        self.jmonth = month
-        self.jday = day
+        self.persian_year = year
+        self.persian_month = month
+        self.persian_day = day
 
         # Convert date
         d_4 = (year + 1) % 4
@@ -178,15 +178,15 @@ class Persian:
                 break
             gd -= v
 
-        self.gyear = gy
-        self.gmonth = gm
-        self.gday = gd
+        self.gregorian_year = gy
+        self.gregorian_month = gm
+        self.gregorian_day = gd
 
     def gregorian_tuple(self):
-        return self.gyear, self.gmonth, self.gday
+        return self.gregorian_year, self.gregorian_month, self.gregorian_day
 
     def gregorian_string(self, date_format="{}-{}-{}"):
-        return date_format.format(self.gyear, self.gmonth, self.gday)
+        return date_format.format(self.gregorian_year, self.gregorian_month, self.gregorian_day)
 
     def gregorian_datetime(self):
-        return datetime.date(self.gyear, self.gmonth, self.gday)
+        return datetime.date(self.gregorian_year, self.gregorian_month, self.gregorian_day)
